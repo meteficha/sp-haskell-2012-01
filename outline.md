@@ -1,6 +1,8 @@
-= Yesod! =
+Yesod!
+======
 
-== About this presentation ==
+About this presentation
+-----------------------
 
 * Just an overview:
   * Yesod features,
@@ -12,22 +14,24 @@
   * Read the Yesod book!
 
 
-== Yesod features ==
-=== Type-safe routes ===
+Yesod features
+--------------
+
+### Type-safe routes
 
 * Routes are represented by data types.
 
-    /             RootR     GET
-    /blog/#BlogId BlogPostR GET
+        /             RootR     GET
+        /blog/#BlogId BlogPostR GET
 
 * Typos are caught in compile time.
 
-    Not in scope: data constructor `BlogPsotR'
-    Perhaps you meant `BlogPostR'
+        Not in scope: data constructor `BlogPsotR'
+        Perhaps you meant `BlogPostR'
 
 * Parsing and rendering always in sync: no broken links, ever!
 
-=== Compile-time templates ===
+### Compile-time templates
 
 * Syntax checked at compile time.
 
@@ -38,7 +42,7 @@
   * CSS (Cassius, Lucius),
   * JS (Julius, CoffeeScript, Roy).
 
-=== XSS protection ===
+### XSS protection
 
 * Text within your app is your text, always.
 
@@ -54,16 +58,16 @@
 
 * You never directly call any (un)escaping function.
 
-=== Persistent ===
+### Persistent
 
 * Declare entity definitions in a DSL (domain specific language).
 
-    Person
-      name String
-      age Int Maybe
-    BlogPost
-      title String
-      authorId PersonId
+        Person
+          name String
+          age Int Maybe
+        BlogPost
+          title String
+          authorId PersonId
 
 * Generates data types, marshalling functions, schemas.
 
@@ -73,7 +77,7 @@
 
 * NoSQL backends: MongoDB.
 
-=== Esqueleto ===
+### Esqueleto
 
 * Type checked embedded DSL for SQL queries.
 
@@ -81,62 +85,63 @@
 
 * Supports very complex queries.
 
-    SELECT BlogPost.*, Person.*
-    FROM BlogPost, Person
-    WHERE BlogPost.authorId = Person.id
-    ORDER BY BlogPost.title ASC
+        SELECT BlogPost.*, Person.*
+        FROM BlogPost, Person
+        WHERE BlogPost.authorId = Person.id
+        ORDER BY BlogPost.title ASC
 
-    select $
-    from $ \(b, p) -> do
-    where_ (b ^. BlogPostAuthorId ==. p ^. PersonId)
-    orderBy [asc (b ^. BlogPostTitle)]
-    return (b, p)
+        select $
+        from $ \(b, p) -> do
+        where_ (b ^. BlogPostAuthorId ==. p ^. PersonId)
+        orderBy [asc (b ^. BlogPostTitle)]
+        return (b, p)
 
 
-    SELECT Person.*
-    FROM Person
-    WHERE EXISTS (SELECT *
-                  FROM BlogPost
-                  WHERE BlogPost.authorId = Person.id)
+        SELECT Person.*
+        FROM Person
+        WHERE EXISTS (SELECT *
+                      FROM BlogPost
+                      WHERE BlogPost.authorId = Person.id)
 
-    select $
-    from $ \person -> do
-    where_ $ exists $
-             from $ \post -> do
-             where_ (post ^. BlogPostAuthorId ==. person ^. PersonId)
-    return person
+        select $
+        from $ \person -> do
+        where_ $ exists $
+                 from $ \post -> do
+                 where_ (post ^. BlogPostAuthorId ==. person ^. PersonId)
+        return person
 
 
 * Composable queries.
 
-    blogPostsFrom personId =
-      from $ \post -> do
-      where_ (post ^. BlogPostAuthorId ==. personId)
-      return post
+        blogPostsFrom personId =
+          from $ \post -> do
+          where_ (post ^. BlogPostAuthorId ==. personId)
+          return post
 
-    bloggers =
-      from $ \person -> do
-      where_ $ exists $ void $ blogPostsFrom (person ^. PersonId)
-      return person
+        bloggers =
+          from $ \person -> do
+          where_ $ exists $ void $ blogPostsFrom (person ^. PersonId)
+          return person
 
 
-=== Widgets ===
-=== Others ===
+### Widgets
+### Others
 
 * Type-safe I18n via messages as data types.
 
 
-== Yesod ecosystem ==
-=== Team ===
-=== Libraries ===
+Yesod ecosystem
+---------------
+
+### Team
+### Libraries
 
 
-== Blog example ==
-=== Entities ===
-=== Routes ===
-=== Handlers ===
-=== Screenshot ===
+Blog example
+------------
 
-
-== Homework ==
+### Entities
+### Routes
+### Handlers
+### Screenshot
 
