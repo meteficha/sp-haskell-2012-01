@@ -42,6 +42,8 @@ Yesod features
   * CSS (Cassius, Lucius),
   * JS (Julius, CoffeeScript, Roy).
 
+* Called "Shakespearean templates".
+
 ### XSS protection
 
 * Text within your app is your text, always.
@@ -125,16 +127,65 @@ Yesod features
 
 
 ### Widgets
+
+* HTML, CSS, JavaScript and Haskell code in a single bundle.
+
+* Affects both <body> and <head> (CSS and JS are concatenated in
+  into a single, minified file).
+
 ### Others
 
 * Type-safe I18n via messages as data types.
+
+* Subsites, may define their own subroutes.
+
+* Authentication with many ready-to-use plugins (e-mail, Google, Facebook...).
+
+* Server middlewares (logging, gzip, JSON-P...).
+
+* Automatic deployment via keter.
+
+* And much more!
 
 
 Yesod ecosystem
 ---------------
 
 ### Team
+
+* Yesod was created by Michael Snoyman but currently is a work of
+  many people.
+
+* About a dozen people have commit access to Yesod repos right now.
+
+* Many other contributors without commit access (yet!).
+
+* Very friendly community, come join us =).
+
+(Data from January 23rd, 2013.)
+
 ### Libraries
+
+* The Yesod Team maintains a lot of libraries, many of which are
+  not Yesod-specific and are used elsewhere.
+
+* Some tracks of libraries:
+
+  * Persistent: core, mysql, postgresql, sqlite, mongoDB.
+
+  * Yesod: core, auth (+ plugins), form, persistent, json, default, platform.
+
+  * Shakespeare: core, css, js, text, hamlet.
+
+  * Conduit: core, attoparsec, base64, blaze-builder, crypto,
+    http, network, pool, xml, zlib.
+
+  * WAI: wai, wai-app-static, wai-extra, warp, warp-tls.
+
+  * Others: cookie, clientsession, esqueleto, keter...
+
+* However, none of these libraries would exist without the
+  awesome ecosystem that has been flourishing on the Haskell land!
 
 
 Blog example
@@ -144,4 +195,3 @@ Blog example
 ### Routes
 ### Handlers
 ### Screenshot
-
