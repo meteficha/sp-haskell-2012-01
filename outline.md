@@ -178,11 +178,11 @@ January 23rd, 2013
     * Haskell using esqueleto:
 
             !haskell
-            select $
-            from $ \(b, p) -> do
-            where_ (b ^. BlogPostAuthorId ==. p ^. PersonId)
-            orderBy [asc (b ^. BlogPostTitle)]
-            return (b, p)
+              select $
+              from $ \(b, p) -> do
+              where_ (b ^. BlogPostAuthorId ==. p ^. PersonId)
+              orderBy [asc (b ^. BlogPostTitle)]
+              return (b, p)
 
 
 ---
@@ -237,7 +237,7 @@ January 23rd, 2013
 
 ---
 
-# Type-safe I18n messages
+# Type-safe i18n messages
 
 * I18n messages are generated from a file that does not scare translators.
 

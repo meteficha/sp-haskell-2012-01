@@ -507,11 +507,11 @@ Perhaps you meant `BlogPostR'
 </li>
 <li>
 <p>Haskell using esqueleto:</p>
-<div class="highlight"><pre><span class="lineno">1</span> <span class="nf">select</span> <span class="o">$</span>
-<span class="lineno">2</span> <span class="nf">from</span> <span class="o">$</span> <span class="nf">\</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="kr">do</span>
-<span class="lineno">3</span> <span class="nf">where_</span> <span class="p">(</span><span class="n">b</span> <span class="o">^.</span> <span class="kt">BlogPostAuthorId</span> <span class="o">==.</span> <span class="n">p</span> <span class="o">^.</span> <span class="kt">PersonId</span><span class="p">)</span>
-<span class="lineno">4</span> <span class="nf">orderBy</span> <span class="p">[</span><span class="n">asc</span> <span class="p">(</span><span class="n">b</span> <span class="o">^.</span> <span class="kt">BlogPostTitle</span><span class="p">)]</span>
-<span class="lineno">5</span> <span class="nf">return</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<div class="highlight"><pre><span class="lineno">1</span>   <span class="n">select</span> <span class="o">$</span>
+<span class="lineno">2</span>   <span class="n">from</span> <span class="o">$</span> <span class="nf">\</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="kr">do</span>
+<span class="lineno">3</span>   <span class="n">where_</span> <span class="p">(</span><span class="n">b</span> <span class="o">^.</span> <span class="kt">BlogPostAuthorId</span> <span class="o">==.</span> <span class="n">p</span> <span class="o">^.</span> <span class="kt">PersonId</span><span class="p">)</span>
+<span class="lineno">4</span>   <span class="n">orderBy</span> <span class="p">[</span><span class="n">asc</span> <span class="p">(</span><span class="n">b</span> <span class="o">^.</span> <span class="kt">BlogPostTitle</span><span class="p">)]</span>
+<span class="lineno">5</span>   <span class="n">return</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
 </pre></div>
 
 </li>
@@ -654,7 +654,7 @@ Perhaps you meant `BlogPostR'
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Type-safe I18n messages</h1></header>
+            <header><h1>Type-safe i18n messages</h1></header>
             
             
             <section><ul>
@@ -1012,7 +1012,7 @@ http, network, pool, xml, zlib.</p>
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">Type-safe I18n messages</a></th>
+        <th><a href="#slide13">Type-safe i18n messages</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
