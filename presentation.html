@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Yesod!</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="/usr/lib/python2.7/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="/usr/lib/python2.7/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+      
+      <link rel="stylesheet" href="landslide.css">
+      
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="/usr/lib/python2.7/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide title">
+          <div class="inner">
+            
+            <header><h1>Yesod!</h1></header>
+            
+            
+            <section><p>Felipe Lessa (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#108;&#105;&#112;&#101;&#46;&#108;&#101;&#115;&#115;&#97;&#64;&#108;&#111;&#121;&#102;&#117;&#108;&#46;&#99;&#111;&#109;">&#102;&#101;&#108;&#105;&#112;&#101;&#46;&#108;&#101;&#115;&#115;&#97;&#64;&#108;&#111;&#121;&#102;&#117;&#108;&#46;&#99;&#111;&#109;</a>)</p>
+<p>2nd São Paulo Haskellers Meeting</p>
+<p>January 23rd, 2013</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>About this presentation</h1></header>
+            
+            
+            <section><ul>
+<li>Just an overview:<ul>
+<li>Yesod features,</li>
+<li>Yesod ecosystem, and</li>
+<li>Blog example (if time allows)</li>
+</ul>
+</li>
+<li>Somewhat based on Michael Snoyman's QCon 2011 presentation.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Yesod features</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Type-safe routes</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Routes are represented by data types.</p>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="o">/</span>             <span class="kt">RootR</span>     <span class="kt">GET</span>
+<span class="lineno">2</span> <span class="o">/</span><span class="n">blog</span><span class="o">/#</span><span class="kt">BlogId</span> <span class="kt">BlogPostR</span> <span class="kt">GET</span>
+</pre></div>
+
+</li>
+<li>
+<p>Typos are caught in compile time.</p>
+<pre><code>Not in scope: data constructor `BlogPsotR'
+Perhaps you meant `BlogPostR'
+</code></pre>
+</li>
+<li>
+<p>Parsing and rendering always in sync: no broken links, ever!</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Compile-time templates</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Called "Shakespearean templates".</p>
+</li>
+<li>
+<p>Syntax checked at compile time.</p>
+</li>
+<li>
+<p>Only type-safe Haskell values used.</p>
+</li>
+<li>
+<p>Supports:</p>
+<ul>
+<li>HTML (Hamlet),</li>
+<li>CSS (Cassius, Lucius),</li>
+<li>JavaScript (Julius, CoffeeScript, Roy).</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Example</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Hamlet:</p>
+<div class="highlight"><pre><span class="lineno"> 1</span> $doctype 5
+<span class="lineno"> 2</span> <span class="nt">&lt;html&gt;</span>
+<span class="lineno"> 3</span>     <span class="nt">&lt;head&gt;</span>
+<span class="lineno"> 4</span>         <span class="nt">&lt;title&gt;</span>#{pageTitle} - My Site
+<span class="lineno"> 5</span>         <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">stylesheet</span> <span class="na">href=</span><span class="s">@{Stylesheet}</span><span class="nt">&gt;</span>
+<span class="lineno"> 6</span>     <span class="nt">&lt;body&gt;</span>
+<span class="lineno"> 7</span>         <span class="nt">&lt;h1</span> <span class="err">.</span><span class="na">page-title</span><span class="nt">&gt;</span>#{pageTitle}
+<span class="lineno"> 8</span>         <span class="nt">&lt;p&gt;</span>Here is a list of your friends:
+<span class="lineno"> 9</span>         $if null friends
+<span class="lineno">10</span>             <span class="nt">&lt;p&gt;</span>Sorry, I lied, you don&#39;t have any friends.
+<span class="lineno">11</span>         $else
+<span class="lineno">12</span>             <span class="nt">&lt;ul&gt;</span>
+<span class="lineno">13</span>                 $forall Friend name age <span class="err">&lt;</span>- friends
+<span class="lineno">14</span>                     <span class="nt">&lt;li&gt;</span>#{name} (#{age} years old)
+<span class="lineno">15</span>         ^{footer}
+</pre></div>
+
+</li>
+<li>
+<p>Cassius:</p>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nf">#myid</span>
+<span class="lineno">2</span>     <span class="nt">color</span><span class="o">:</span> <span class="err">#</span><span class="p">{</span><span class="nb">red</span><span class="p">}</span>
+<span class="lineno">3</span>     <span class="nt">font-size</span><span class="o">:</span> <span class="err">#</span><span class="p">{</span><span class="n">bodyFontSize</span><span class="p">}</span>
+<span class="lineno">4</span> <span class="nt">foo</span> <span class="nt">bar</span> <span class="nt">baz</span>
+<span class="lineno">5</span>     <span class="nt">background-image</span><span class="o">:</span> <span class="nt">url</span><span class="o">(@</span><span class="p">{</span><span class="n">MyBackgroundR</span><span class="p">}</span><span class="o">)</span>
+</pre></div>
+
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Security</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Avoids XSS attacks and SQL injections:</p>
+<ul>
+<li>
+<p>Text within your app is your text, always.</p>
+</li>
+<li>
+<p>App boundaries are correctly treated, automatically, always.</p>
+<ul>
+<li>
+<p>Templates (interpolation),</p>
+</li>
+<li>
+<p>Routes (parsing and rendering),</p>
+</li>
+<li>
+<p>Forms (decoding and encoding),</p>
+</li>
+<li>
+<p>Database queries (decoding and encoding).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>You never directly call any (un)escaping function.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Avoids XSRF attacks:</p>
+<ul>
+<li>Forms always query a token used to avoid XSRF attacks.</li>
+</ul>
+</li>
+<li>
+<p>Entire classes of bugs are eliminated!</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Persistent</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Declare entity definitions in a DSL (domain specific language).</p>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="kt">Person</span>
+<span class="lineno">2</span>   <span class="n">name</span> <span class="kt">String</span>
+<span class="lineno">3</span>   <span class="n">age</span> <span class="kt">Int</span> <span class="kt">Maybe</span>
+<span class="lineno">4</span> <span class="kt">BlogPost</span>
+<span class="lineno">5</span>   <span class="n">title</span> <span class="kt">String</span>
+<span class="lineno">6</span>   <span class="n">authorId</span> <span class="kt">PersonId</span>
+</pre></div>
+
+</li>
+<li>
+<p>Generates data types, marshalling functions, schemas.</p>
+</li>
+<li>
+<p>Automatic schema migration.</p>
+</li>
+<li>
+<p>SQL backends: PostgreSQL, MySQL, SQLite.</p>
+</li>
+<li>
+<p>NoSQL backends: MongoDB.</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Persistent</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>CRUD example:</p>
+<div class="highlight"><pre><span class="lineno"> 1</span>   <span class="n">johnId</span> <span class="ow">&lt;-</span> <span class="n">insert</span> <span class="o">$</span> <span class="kt">Person</span> <span class="s">&quot;John Doe&quot;</span> <span class="p">(</span><span class="kt">Just</span> <span class="mi">35</span><span class="p">)</span>
+<span class="lineno"> 2</span>   <span class="n">janeId</span> <span class="ow">&lt;-</span> <span class="n">insert</span> <span class="o">$</span> <span class="kt">Person</span> <span class="s">&quot;Jane Doe&quot;</span> <span class="kt">Nothing</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span>   <span class="n">insert</span> <span class="o">$</span> <span class="kt">BlogPost</span> <span class="s">&quot;My fr1st p0st&quot;</span> <span class="n">johnId</span>
+<span class="lineno"> 5</span>   <span class="n">insert</span> <span class="o">$</span> <span class="kt">BlogPost</span> <span class="s">&quot;One more for good measure&quot;</span> <span class="n">johnId</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span>   <span class="n">oneJohnPost</span> <span class="ow">&lt;-</span> <span class="n">selectList</span> <span class="p">[</span><span class="kt">BlogPostAuthorId</span> <span class="o">==.</span> <span class="n">johnId</span><span class="p">]</span> <span class="p">[</span><span class="kt">LimitTo</span> <span class="mi">1</span><span class="p">]</span>
+<span class="lineno"> 8</span>   <span class="n">liftIO</span> <span class="o">$</span> <span class="n">print</span> <span class="p">(</span><span class="n">oneJohnPost</span> <span class="ow">::</span> <span class="p">[(</span><span class="kt">BlogPostId</span><span class="p">,</span> <span class="kt">BlogPost</span><span class="p">)])</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span>   <span class="n">john</span> <span class="ow">&lt;-</span> <span class="n">get</span> <span class="n">johnId</span>
+<span class="lineno">11</span>   <span class="n">liftIO</span> <span class="o">$</span> <span class="n">print</span> <span class="p">(</span><span class="n">john</span> <span class="ow">::</span> <span class="kt">Maybe</span> <span class="kt">Person</span><span class="p">)</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span>   <span class="n">delete</span> <span class="n">janeId</span>
+<span class="lineno">14</span>   <span class="n">deleteWhere</span> <span class="p">[</span><span class="kt">BlogPostAuthorId</span> <span class="o">==.</span> <span class="n">johnId</span><span class="p">]</span>
+</pre></div>
+
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Esqueleto</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Type checked embedded DSL for SQL queries.</p>
+</li>
+<li>
+<p>Built on top of persistent.</p>
+</li>
+<li>
+<p>Supports very complex queries.  For example:</p>
+<ul>
+<li>
+<p>SQL:</p>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="k">SELECT</span> <span class="n">BlogPost</span><span class="p">.</span><span class="o">*</span><span class="p">,</span> <span class="n">Person</span><span class="p">.</span><span class="o">*</span>
+<span class="lineno">2</span> <span class="k">FROM</span> <span class="n">BlogPost</span><span class="p">,</span> <span class="n">Person</span>
+<span class="lineno">3</span> <span class="k">WHERE</span> <span class="n">BlogPost</span><span class="p">.</span><span class="n">authorId</span> <span class="o">=</span> <span class="n">Person</span><span class="p">.</span><span class="n">id</span>
+<span class="lineno">4</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">BlogPost</span><span class="p">.</span><span class="n">title</span> <span class="k">ASC</span>
+</pre></div>
+
+</li>
+<li>
+<p>Haskell using esqueleto:</p>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nf">select</span> <span class="o">$</span>
+<span class="lineno">2</span> <span class="nf">from</span> <span class="o">$</span> <span class="nf">\</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="kr">do</span>
+<span class="lineno">3</span> <span class="nf">where_</span> <span class="p">(</span><span class="n">b</span> <span class="o">^.</span> <span class="kt">BlogPostAuthorId</span> <span class="o">==.</span> <span class="n">p</span> <span class="o">^.</span> <span class="kt">PersonId</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="nf">orderBy</span> <span class="p">[</span><span class="n">asc</span> <span class="p">(</span><span class="n">b</span> <span class="o">^.</span> <span class="kt">BlogPostTitle</span><span class="p">)]</span>
+<span class="lineno">5</span> <span class="nf">return</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Esqueleto</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Queries are composable as well!</p>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nf">blogPostsFrom</span> <span class="n">personId</span> <span class="ow">=</span>
+<span class="lineno">2</span>   <span class="n">from</span> <span class="o">$</span> <span class="nf">\</span><span class="n">post</span> <span class="ow">-&gt;</span> <span class="kr">do</span>
+<span class="lineno">3</span>   <span class="n">where_</span> <span class="p">(</span><span class="n">post</span> <span class="o">^.</span> <span class="kt">BlogPostAuthorId</span> <span class="o">==.</span> <span class="n">personId</span><span class="p">)</span>
+<span class="lineno">4</span>   <span class="n">return</span> <span class="n">post</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="nf">bloggers</span> <span class="ow">=</span>
+<span class="lineno">7</span>   <span class="n">from</span> <span class="o">$</span> <span class="nf">\</span><span class="n">person</span> <span class="ow">-&gt;</span> <span class="kr">do</span>
+<span class="lineno">8</span>   <span class="n">where_</span> <span class="o">$</span> <span class="n">exists</span> <span class="o">$</span> <span class="n">void</span> <span class="o">$</span> <span class="n">blogPostsFrom</span> <span class="p">(</span><span class="n">person</span> <span class="o">^.</span> <span class="kt">PersonId</span><span class="p">)</span>
+<span class="lineno">9</span>   <span class="n">return</span> <span class="n">person</span>
+</pre></div>
+
+</li>
+<li>
+<p>Using it inside Yesod:</p>
+<div class="highlight"><pre><span class="lineno">1</span>   <span class="n">people</span> <span class="ow">&lt;-</span> <span class="n">runDB</span> <span class="p">(</span><span class="n">select</span> <span class="n">bloggers</span><span class="p">)</span>   <span class="cm">{- (= -}</span>
+</pre></div>
+
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Widgets</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>HTML, CSS, JavaScript and Haskell code in a single bundle.</p>
+</li>
+<li>
+<p>Affects both <body> and <head> (CSS and JS are concatenated in
+  into a single, minified file).</p>
+</li>
+<li>
+<p>Example:</p>
+<div class="highlight"><pre><span class="lineno"> 1</span> <span class="nf">footer</span> <span class="ow">=</span> <span class="kr">do</span>
+<span class="lineno"> 2</span>     <span class="n">toWidget</span> <span class="p">[</span><span class="n">lucius</span><span class="o">|</span>
+<span class="lineno"> 3</span>       <span class="n">footer</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="n">font</span><span class="o">-</span><span class="n">weight</span><span class="kt">:</span> <span class="n">bold</span><span class="p">;</span> <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="kt">:</span> <span class="n">center</span>
+<span class="lineno"> 5</span>       <span class="p">}</span>
+<span class="lineno"> 6</span>     <span class="o">|</span><span class="p">]</span>
+<span class="lineno"> 7</span>     <span class="n">toWidget</span> <span class="p">[</span><span class="n">hamlet</span><span class="o">|</span>
+<span class="lineno"> 8</span>       <span class="o">&lt;</span><span class="n">footer</span><span class="o">&gt;</span>
+<span class="lineno"> 9</span>         <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">That&#39;s</span> <span class="n">all</span> <span class="n">folks</span><span class="o">!</span>
+<span class="lineno">10</span>     <span class="o">|</span><span class="p">]</span>
+</pre></div>
+
+</li>
+<li>
+<p>Templates could be in another file.</p>
+</li>
+<li>
+<p>There could be arbitrary I/O actions, such as database queries.</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Type-safe I18n messages</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>I18n messages are generated from a file that does not scare translators.</p>
+</li>
+<li>
+<p>However, a data type is created from them (just like routes).</p>
+</li>
+<li>
+<p>Example:</p>
+<ul>
+<li>
+<p>English:</p>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nf">CommentsHeading</span><span class="o">:</span> <span class="m">Comments</span>
+<span class="lineno">2</span> <span class="nf">NoComments</span><span class="o">:</span> <span class="m">There are no comments</span>
+<span class="lineno">3</span> <span class="nf">AddCommentHeading</span><span class="o">:</span> <span class="m">Add a Comment</span>
+<span class="lineno">4</span> <span class="nf">CommentAuthor author@Text</span><span class="o">:</span> <span class="m">Comment by </span><span class="c">#{author}</span>
+</pre></div>
+
+</li>
+<li>
+<p>Portuguese:</p>
+<div class="highlight"><pre><span class="lineno">1</span> <span class="nf">CommentsHeading</span><span class="o">:</span> <span class="m">Comentários</span>
+<span class="lineno">2</span> <span class="nf">NoComments</span><span class="o">:</span> <span class="m">Não há nenhum comentário</span>
+<span class="lineno">3</span> <span class="nf">AddCommentHeading</span><span class="o">:</span> <span class="m">Deixar um Comentário</span>
+<span class="lineno">4</span> <span class="nf">CommentAuthor author@Text</span><span class="o">:</span> <span class="m">Comentário de </span><span class="c">#{author}</span>
+</pre></div>
+
+</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Others</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Subsites, may define their own subroutes.</p>
+</li>
+<li>
+<p>Authentication with many ready-to-use plugins (e-mail, Google, Facebook...).</p>
+</li>
+<li>
+<p>Server middlewares (logging, gzip, JSON-P...).</p>
+</li>
+<li>
+<p>Automatic deployment via keter.</p>
+</li>
+<li>
+<p>And much more!</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Yesod ecosystem</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Team</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Yesod was created by Michael Snoyman but currently is a work of
+  many people.</p>
+</li>
+<li>
+<p>About a dozen people have commit access to Yesod repos right now.</p>
+</li>
+<li>
+<p>Many other contributors without commit access (yet!).</p>
+</li>
+<li>
+<p>Very friendly community, come join us =).</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Libraries</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>The Yesod Team maintains a lot of libraries, many of which are
+  not Yesod-specific and are used elsewhere.</p>
+</li>
+<li>
+<p>Some tracks of libraries:</p>
+<ul>
+<li>
+<p>Persistent: core, mysql, postgresql, sqlite, mongoDB.</p>
+</li>
+<li>
+<p>Yesod: core, auth (+ plugins), form, persistent, json, default, platform.</p>
+</li>
+<li>
+<p>Shakespeare: core, css, js, text, hamlet.</p>
+</li>
+<li>
+<p>Conduit: core, attoparsec, base64, blaze-builder, crypto,
+http, network, pool, xml, zlib.</p>
+</li>
+<li>
+<p>WAI: wai, wai-app-static, wai-extra, warp, warp-tls.</p>
+</li>
+<li>
+<p>Others: cookie, clientsession, esqueleto, keter...</p>
+</li>
+</ul>
+</li>
+<li>
+<p>However, none of these libraries would exist without the
+  awesome ecosystem that has been flourishing on the Haskell land!</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: outline.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Thanks!</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Contact info: Felipe Lessa (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#108;&#105;&#112;&#101;&#46;&#108;&#101;&#115;&#115;&#97;&#64;&#108;&#111;&#121;&#102;&#117;&#108;&#46;&#99;&#111;&#109;">&#102;&#101;&#108;&#105;&#112;&#101;&#46;&#108;&#101;&#115;&#115;&#97;&#64;&#108;&#111;&#121;&#102;&#117;&#108;&#46;&#99;&#111;&#109;</a>)</p>
+</li>
+<li>
+<p>Homework:</p>
+<ul>
+<li>Go to <a href="http://www.yesodweb.com/">http://www.yesodweb.com/</a>.</li>
+<li>Read the Yesod book!</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="outline.md">outline.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Yesod!</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">About this presentation</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">Yesod features</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Type-safe routes</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Compile-time templates</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Example</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Security</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Persistent</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Persistent</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">Esqueleto</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Esqueleto</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Widgets</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Type-safe I18n messages</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">Others</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Yesod ecosystem</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Team</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">Libraries</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Thanks!</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>

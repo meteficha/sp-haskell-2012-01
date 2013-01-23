@@ -27,6 +27,14 @@ div.title div header h1 {
   margin-bottom: 100px;
 }
 
+div.title div header {
+  left: 0;
+}
+
 div.title div section {
   margin-top: 400px;
+}
+
+.err {
+  border: none;
 }

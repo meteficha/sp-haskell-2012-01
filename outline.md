@@ -2,7 +2,7 @@
 
 .fx: title
 
-Felipe Lessa (<felipe.lessa@gmail.com>)
+Felipe Lessa (<felipe.lessa@loyful.com>)
 
 2nd São Paulo Haskellers Meeting
 
@@ -17,10 +17,7 @@ January 23rd, 2013
     * Yesod features,
     * Yesod ecosystem, and
     * Blog example (if time allows)
-* Based on Michael Snoyman's QCon 2011 presentation.
-* Homework:
-    * Go to <http://www.yesodweb.com/>.
-    * Read the Yesod book!
+* Somewhat based on Michael Snoyman's QCon 2011 presentation.
 
 ---
 
@@ -60,23 +57,61 @@ January 23rd, 2013
 
 ---
 
-# XSS protection
+# Example
 
-* Text within your app is your text, always.
+* Hamlet:
 
-* App boundaries are correctly treated, automatically, always.
+        !html
+        $doctype 5
+        <html>
+            <head>
+                <title>#{pageTitle} - My Site
+                <link rel=stylesheet href=@{Stylesheet}>
+            <body>
+                <h1 .page-title>#{pageTitle}
+                <p>Here is a list of your friends:
+                $if null friends
+                    <p>Sorry, I lied, you don't have any friends.
+                $else
+                    <ul>
+                        $forall Friend name age <- friends
+                            <li>#{name} (#{age} years old)
+                ^{footer}
 
-    * Templates (interpolation),
+* Cassius:
 
-    * Routes (parsing and rendering),
+        !css
+        #myid
+            color: #{red}
+            font-size: #{bodyFontSize}
+        foo bar baz
+            background-image: url(@{MyBackgroundR})
 
-    * Forms (decoding and encoding),
+---
 
-    * Database queries (decoding and encoding).
+# Security
 
-* You never directly call any (un)escaping function.
+* Avoids XSS attacks and SQL injections:
 
-* An entire class of bugs is eliminated!
+    * Text within your app is your text, always.
+
+    * App boundaries are correctly treated, automatically, always.
+
+        * Templates (interpolation),
+
+        * Routes (parsing and rendering),
+
+        * Forms (decoding and encoding),
+
+        * Database queries (decoding and encoding).
+
+    * You never directly call any (un)escaping function.
+
+* Avoids XSRF attacks:
+
+    * Forms always query a token used to avoid XSRF attacks.
+
+* Entire classes of bugs are eliminated!
 
 ---
 
@@ -104,19 +139,23 @@ January 23rd, 2013
 
 # Persistent
 
-* Example:
+* CRUD example:
 
         !haskell
-        johnId <- insert $ Person "John Doe" (Just 35)
-        janeId <- insert $ Person "Jane Doe" Nothing
-        insert $ BlogPost "My fr1st p0st" johnId
-        insert $ BlogPost "One more for good measure" johnId
-        oneJohnPost <- selectList [BlogPostAuthorId ==. johnId] [LimitTo 1]
-        liftIO $ print (oneJohnPost :: [(BlogPostId, BlogPost)])
-        john <- get johnId
-        liftIO $ print (john :: Maybe Person)
-        delete janeId
-        deleteWhere [BlogPostAuthorId ==. johnId]
+          johnId <- insert $ Person "John Doe" (Just 35)
+          janeId <- insert $ Person "Jane Doe" Nothing
+
+          insert $ BlogPost "My fr1st p0st" johnId
+          insert $ BlogPost "One more for good measure" johnId
+
+          oneJohnPost <- selectList [BlogPostAuthorId ==. johnId] [LimitTo 1]
+          liftIO $ print (oneJohnPost :: [(BlogPostId, BlogPost)])
+
+          john <- get johnId
+          liftIO $ print (john :: Maybe Person)
+
+          delete janeId
+          deleteWhere [BlogPostAuthorId ==. johnId]
 
 ---
 
@@ -150,7 +189,7 @@ January 23rd, 2013
 
 # Esqueleto
 
-* Queries are composable!
+* Queries are composable as well!
 
         !haskell
         blogPostsFrom personId =
@@ -163,6 +202,11 @@ January 23rd, 2013
           where_ $ exists $ void $ blogPostsFrom (person ^. PersonId)
           return person
 
+
+* Using it inside Yesod:
+
+        !haskell
+          people <- runDB (select bloggers)   {- (= -}
 
 ---
 
@@ -189,13 +233,37 @@ January 23rd, 2013
 
 * Templates could be in another file.
 
-* There could be any I/O actions, such as database queries.
+* There could be arbitrary I/O actions, such as database queries.
+
+---
+
+# Type-safe I18n messages
+
+* I18n messages are generated from a file that does not scare translators.
+
+* However, a data type is created from them (just like routes).
+
+* Example:
+
+    * English:
+
+            !makefile
+            CommentsHeading: Comments
+            NoComments: There are no comments
+            AddCommentHeading: Add a Comment
+            CommentAuthor author@Text: Comment by #{author}
+
+    * Portuguese:
+
+            !makefile
+            CommentsHeading: Comentários
+            NoComments: Não há nenhum comentário
+            AddCommentHeading: Deixar um Comentário
+            CommentAuthor author@Text: Comentário de #{author}
 
 ---
 
 # Others
-
-* Type-safe I18n via messages as data types.
 
 * Subsites, may define their own subroutes.
 
@@ -224,8 +292,6 @@ January 23rd, 2013
 
 * Very friendly community, come join us =).
 
-(Data from January 23rd, 2013.)
-
 ---
 
 # Libraries
@@ -253,11 +319,10 @@ January 23rd, 2013
 
 ---
 
-# Blog example
+# Thanks!
 
----
+* Contact info: Felipe Lessa (<felipe.lessa@loyful.com>)
 
-# Entities
-### Routes
-### Handlers
-### Screenshot
+* Homework:
+    * Go to <http://www.yesodweb.com/>.
+    * Read the Yesod book!
