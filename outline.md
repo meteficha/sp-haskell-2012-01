@@ -149,7 +149,7 @@ January 23rd, 2013
           insert $ BlogPost "One more for good measure" johnId
 
           oneJohnPost <- selectList [BlogPostAuthorId ==. johnId] [LimitTo 1]
-          liftIO $ print (oneJohnPost :: [(BlogPostId, BlogPost)])
+          liftIO $ print (oneJohnPost :: [Entity BlogPost])
 
           john <- get johnId
           liftIO $ print (john :: Maybe Person)
